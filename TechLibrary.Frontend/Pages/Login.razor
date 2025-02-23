@@ -1,0 +1,38 @@
+@page "/login"
+@inject AuthService AuthService
+@inject NavigationManager Navigation
+
+<h3>Login</h3>
+
+<EditForm Model="loginModel" OnValidSubmit="HandleLogin">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label class="form-label">Email:</label>
+        <InputText @bind-Value="loginModel.Email" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Senha:</label>
+        <InputText @bind-Value="loginModel.Password" InputType="password" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Entrar</button>
+</EditForm>
+
+@code {
+    private LoginModel loginModel = new LoginModel();
+
+    private async Task HandleLogin()
+    {
+        var result = await AuthService.Login(loginModel);
+        if (result)
+        {
+            Navigation.NavigateTo("/");
+            Navigation.Refresh();
+        }
+        else
+        {
+            // Lógica para tratar falha no login
+        }
+    }
+}
