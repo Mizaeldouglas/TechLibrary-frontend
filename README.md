@@ -3,9 +3,6 @@
 
 ## Frontend do projeto [TechLibrary-API](https://github.com/Mizaeldouglas/TechLibrary-API)
 
-
-# TechLibrary Frontend
-
 Este é o frontend do projeto TechLibrary, uma aplicação web desenvolvida com Blazor WebAssembly. O objetivo do projeto é fornecer uma interface amigável para gerenciar e acessar informações sobre livros.
 
 ## Tecnologias Utilizadas
