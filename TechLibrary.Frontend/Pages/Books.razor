@@ -1,0 +1,73 @@
+@page "/books"
+@inject BookService BookService
+
+<h3>Lista de Livros</h3>
+
+@if (books == null)
+{
+    <p>Carregando...</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var book in books)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-primary" @onclick="PreviousPage" disabled="@(!canNavigatePrevious)">Anterior</button>
+        <button class="btn btn-primary" @onclick="NextPage" disabled="@(!canNavigateNext)">Próximo</button>
+    </div>
+}
+
+@code {
+    private List<Book> books;
+    private int currentPage = 1;
+    private int pageSize = 10;
+    private int totalCount;
+    private bool canNavigatePrevious => currentPage > 1;
+    private bool canNavigateNext => (currentPage + 1) * pageSize < totalCount;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadBooks();
+    }
+
+    private async Task LoadBooks()
+    {
+        var result = await BookService.GetBooksAsync(currentPage, pageSize);
+        books = result.Books;
+        totalCount = result.Pagination.TotalCount;
+    }
+
+    private async Task PreviousPage()
+    {
+        if (canNavigatePrevious)
+        {
+            currentPage--;
+            await LoadBooks();
+        }
+    }
+
+    private async Task NextPage()
+    {
+        if (canNavigateNext)
+        {
+            currentPage++;
+            await LoadBooks();
+        }
+    }
+}
