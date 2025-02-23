@@ -1,0 +1,59 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = TechLibrary.Frontend
+build_property.RootNamespace = TechLibrary.Frontend
+build_property.ProjectDir = /Users/mizaeldouglas/Programação/WorkSpace-DotNet/NLW/NLWConnect/TechLibraryFrontend/TechLibrary/TechLibrary.Frontend/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/mizaeldouglas/Programação/WorkSpace-DotNet/NLW/NLWConnect/TechLibraryFrontend/TechLibrary/TechLibrary.Frontend
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/mizaeldouglas/Programação/WorkSpace-DotNet/NLW/NLWConnect/TechLibraryFrontend/TechLibrary/TechLibrary.Frontend/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mizaeldouglas/Programação/WorkSpace-DotNet/NLW/NLWConnect/TechLibraryFrontend/TechLibrary/TechLibrary.Frontend/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mizaeldouglas/Programação/WorkSpace-DotNet/NLW/NLWConnect/TechLibraryFrontend/TechLibrary/TechLibrary.Frontend/Pages/Books.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQm9va3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mizaeldouglas/Programação/WorkSpace-DotNet/NLW/NLWConnect/TechLibraryFrontend/TechLibrary/TechLibrary.Frontend/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mizaeldouglas/Programação/WorkSpace-DotNet/NLW/NLWConnect/TechLibraryFrontend/TechLibrary/TechLibrary.Frontend/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mizaeldouglas/Programação/WorkSpace-DotNet/NLW/NLWConnect/TechLibraryFrontend/TechLibrary/TechLibrary.Frontend/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mizaeldouglas/Programação/WorkSpace-DotNet/NLW/NLWConnect/TechLibraryFrontend/TechLibrary/TechLibrary.Frontend/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-jbr63olubx
+
+[/Users/mizaeldouglas/Programação/WorkSpace-DotNet/NLW/NLWConnect/TechLibraryFrontend/TechLibrary/TechLibrary.Frontend/Pages/Checkout.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2hlY2tvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-1blemkreqw
+
+[/Users/mizaeldouglas/Programação/WorkSpace-DotNet/NLW/NLWConnect/TechLibraryFrontend/TechLibrary/TechLibrary.Frontend/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-in7tng6g8l

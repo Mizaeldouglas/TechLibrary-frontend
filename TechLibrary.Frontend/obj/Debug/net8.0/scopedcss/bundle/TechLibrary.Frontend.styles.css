@@ -1,0 +1,105 @@
+/* /Layout/MainLayout.razor.rz.scp.css */
+
+
+
+.top-row[b-jbr63olubx] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-jbr63olubx]  a, .top-row[b-jbr63olubx]  .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+    .top-row[b-jbr63olubx]  a:hover, .top-row[b-jbr63olubx]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-jbr63olubx]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row[b-jbr63olubx] {
+        justify-content: space-between;
+    }
+
+    .top-row[b-jbr63olubx]  a, .top-row[b-jbr63olubx]  .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-jbr63olubx] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-jbr63olubx] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-jbr63olubx] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row.auth[b-jbr63olubx]  a:first-child {
+        flex: 1;
+        text-align: right;
+        width: 0;
+    }
+
+    .top-row[b-jbr63olubx], article[b-jbr63olubx] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* /Pages/Checkout.razor.rz.scp.css */
+.modal.show[b-1blemkreqw] {
+    display: block;
+}
+
+.modal-backdrop[b-1blemkreqw] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+}
+/* /Pages/Home.razor.rz.scp.css */
+.jumbotron[b-in7tng6g8l] {
+    background-image: url('https://sophia.com.br/wp-content/uploads/2022/09/biblioteca-digital-solucoes-sophia-scaled.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.fixed-image[b-in7tng6g8l] {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card img[b-in7tng6g8l] {
+    height: 200px;
+    object-fit: cover;
+}
+
+footer[b-in7tng6g8l] {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

@@ -1,0 +1,49 @@
+﻿@inherits LayoutComponentBase
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject AuthService AuthService
+
+<nav class="navbar navbar-light bg-light justify-content-between ">
+    <a class="navbar-brand ms-5" href="/">Tech Library</a>
+    <div>
+        <a class="nav-link d-inline" href="/">Home</a>
+        <a class="nav-link d-inline " href="/checkout">Reservas</a>
+        <a class="nav-link d-inline me-xl-5" href="/books">Livros</a>
+        @if (isLoggedIn)
+        {
+            <span class="navbar-text">Olá, @userEmail</span>
+            <a class="nav-link d-inline" href="/logout" @onclick="Logout">Logout</a>
+        }
+        else
+        {
+            <a class="nav-link d-inline" href="/login">Login</a>
+            <a class="nav-link d-inline" href="/register">Register</a>
+        }
+    </div>
+</nav>
+
+<main class="content px-4">
+    @Body
+</main>
+
+@code {
+    private bool isLoggedIn;
+    private string userEmail;
+
+    protected override async Task OnInitializedAsync()
+    {
+        isLoggedIn = await AuthService.IsUserLoggedIn();
+        if (isLoggedIn)
+        {
+            userEmail = await AuthService.GetUserEmail();
+        }
+    }
+
+    private async Task Logout()
+    {
+        await AuthService.Logout();
+        isLoggedIn = false;
+        NavigationManager.NavigateTo("/");
+        NavigationManager.Refresh();
+    }
+}
