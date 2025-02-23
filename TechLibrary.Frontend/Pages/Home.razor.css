@@ -1,0 +1,23 @@
+.jumbotron {
+    background-image: url('https://sophia.com.br/wp-content/uploads/2022/09/biblioteca-digital-solucoes-sophia-scaled.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.fixed-image {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
