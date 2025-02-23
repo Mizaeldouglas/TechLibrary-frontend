@@ -1,0 +1,153 @@
+@page "/checkout"
+@inject BookService BookService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+
+<h3>Reservas de Livros</h3>
+
+@if (books == null)
+{
+    <p>Carregando livros...</p>
+}
+else if (!books.Any())
+{
+    <p>Nenhum livro disponível para reserva.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var book in books)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="() => AttemptReserveBookAsync(book.Id)" disabled="@(isProcessing && selectedBookId == book.Id)">
+                        @(isProcessing && selectedBookId == book.Id ? "Reservando..." : "Reservar")
+                    </button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-primary" @onclick="PreviousPage" disabled="@(!canNavigatePrevious)">Anterior</button>
+        <button class="btn btn-primary" @onclick="NextPage" disabled="@(!canNavigateNext)">Próximo</button>
+    </div>
+}
+
+@if (showLoginModal)
+{
+    <div class="modal show d-block" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Não Autenticado</h5>
+                    <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                </div>
+                <div class="modal-body">
+                    Você precisa estar logado para reservar um livro.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Fechar</button>
+                    <button type="button" class="btn btn-primary" @onclick="NavigateToLogin">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+
+@code {
+    private List<Book> books;
+    private bool isProcessing = false;
+    private Guid? selectedBookId = null;
+    private int currentPage = 1;
+    private int pageSize = 10;
+    private int totalCount;
+    private bool canNavigatePrevious => currentPage > 1;
+    private bool canNavigateNext => (currentPage + 1) * pageSize < totalCount;
+    private bool showLoginModal = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadBooks();
+    }
+
+    private async Task AttemptReserveBookAsync(Guid bookId)
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity != null && user.Identity.IsAuthenticated)
+        {
+            await ReserveBookAsync(bookId);
+        }
+        else
+        {
+            showLoginModal = true;
+        }
+    }
+
+    private void CloseModal()
+    {
+        showLoginModal = false;
+    }
+
+    private void NavigateToLogin()
+    {
+        NavigationManager.NavigateTo("/login");
+    }
+
+    private async Task ReserveBookAsync(Guid bookId)
+    {
+        try
+        {
+            isProcessing = true;
+            selectedBookId = bookId;
+            await BookService.ReserveBookAsync(bookId);
+            books = books.Where(b => b.Id != bookId).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao reservar o livro: {ex.Message}");
+        }
+        finally
+        {
+            isProcessing = false;
+            selectedBookId = null;
+        }
+    }
+
+    private async Task LoadBooks()
+    {
+        var result = await BookService.GetBooksAsync(currentPage, pageSize);
+        books = result.Books;
+        totalCount = result.Pagination.TotalCount;
+    }
+
+    private async Task PreviousPage()
+    {
+        if (canNavigatePrevious)
+        {
+            currentPage--;
+            await LoadBooks();
+        }
+    }
+
+    private async Task NextPage()
+    {
+        if (canNavigateNext)
+        {
+            currentPage++;
+            await LoadBooks();
+        }
+    }
+}
